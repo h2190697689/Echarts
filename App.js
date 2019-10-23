@@ -1,6 +1,6 @@
 import React, { Component, Fragment} from "react";
 import DrawChart from "./echarts/draw";
-// import "./App.css";
+import "./App.css";
 
 const option = {
     title: {
@@ -28,7 +28,7 @@ class App extends Component{
     render() {
         return (
             <Fragment>
-                <div className="container" style={{position: "absolute",top: 0,right: 0,left: 0,bottom: 0}}>
+                <div className="container">
                     <DrawChart option={option}></DrawChart>
                 </div>
             </Fragment>

@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");   // 分离css文件
+
 
 module.exports = {
     entry: "./index.js",
@@ -19,7 +21,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader","css-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"],
                 exclude: /node_modules/
             }
         ]
@@ -27,6 +31,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "./index.html"
+        }),
+        /**
+         * css分离插件
+         */
+        new MiniCssExtractPlugin({
+            filename: "[name].[hash].css"     // [name]为chunk名称
         })
     ],
     devServer: {
