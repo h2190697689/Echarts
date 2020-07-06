@@ -4,10 +4,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");   // 分离css�
 
 
 module.exports = {
+    mode: "development",
     entry: "./index.js",
+    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname,"./dist"),
-        filename: "[name].[chunkhash].js"
+        filename: "draw-echart.js"
     },
     resolve: {
         extensions: [".js",".jsx","json"]
@@ -28,6 +30,9 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        port: 3001
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./index.html"
@@ -38,8 +43,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].[hash].css"     // [name]为chunk名称
         })
-    ],
-    devServer: {
-        port: 3001
-    }
-}
+    ]
+};

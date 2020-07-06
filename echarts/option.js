@@ -55,3 +55,39 @@ export function getPieOption(data, legendData, optionName, color, orient) {
         ]
     };
 }
+
+
+/**
+ * 获取时间折线图
+ */
+export function getLineOption(){
+    var option = {
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+return option;
+}
+
+export function getSimpleOption() {
+    return {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    };
+
+}
