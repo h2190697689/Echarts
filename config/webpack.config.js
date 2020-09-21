@@ -1,13 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 分离css文件
 
 module.exports = {
     mode: 'development',
-    entry: "./index.js",
+    entry: path.resolve(__dirname,"../index.js"),
     devtool: 'source-map',
     output: {
-        path:  path.resolve(__dirname,"./dist"),
+        path:  path.resolve(__dirname,"../dist"),
         filename: 'draw-echart.js',
     },
     resolve: {
@@ -32,7 +31,6 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                 ],
                 exclude: /node_modules/,
@@ -46,7 +44,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './public/index.html'),
+            template: path.resolve(__dirname, '../public/index.html'),
         })
     ],
 };

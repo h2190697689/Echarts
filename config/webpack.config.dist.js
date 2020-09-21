@@ -1,10 +1,10 @@
 const path = require("path");
 module.exports = {
     mode: "production",
-    entry: "./echarts/draw.js",
+    entry: "../src/echarts/draw.js",
     devtool: 'cheap-module-source-map',
     output: {
-        path: path.resolve(__dirname,"./dist"),
+        path: path.resolve(__dirname,"../build"),
         filename: "draw-echart.js",
         library: "drawEchart",
         libraryTarget: "umd"
@@ -17,7 +17,15 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader",
+                use: [
+                    'babel-loader',
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            fix: true,
+                        },
+                    },
+                ],
                 exclude: /node_modules/
             }
         ]
